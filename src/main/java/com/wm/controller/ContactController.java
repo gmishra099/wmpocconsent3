@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping({ "/api" })
 public class ContactController {
-	
-	public class TestController {
 
 		@RequestMapping(value = "/test", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 		public String home(Model model) {
@@ -18,5 +16,5 @@ public class ContactController {
 			return "testhome123";
 		}
 
-	}
+	
 }
