@@ -8,7 +8,7 @@ public interface ContactService {
 
     Contact createContact(Contact person);
 
-    List<Contact> getAllContacts();
+   public List<Contact> getAllContacts();
 
     long countContacts();
 }
