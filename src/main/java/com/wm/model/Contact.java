@@ -16,6 +16,16 @@ public class Contact {
     @Column(name = "Name")
     private String name;
     
+    @Column(name = "sfid")
+    private String conSFDC;
+    
+    public String getConSFDC() {
+		return conSFDC;
+	}
+
+	public void setConSFDC(String conSFDC) {
+		this.conSFDC = conSFDC;
+	}
 
 
     public Long getId() {
