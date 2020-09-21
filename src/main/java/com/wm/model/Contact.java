@@ -18,7 +18,15 @@ public class Contact {
     
     @Column(name = "sfid")
     private String conSFDC;
-    
+    @Column(name = "Customer_Id__c")
+    private String cusId;
+    public String getCusId() {
+		return cusId;
+	}
+
+   public void setCusId(String cusId) {
+		this.cusId = cusId;
+	}
     public String getConSFDC() {
 		return conSFDC;
 	}
