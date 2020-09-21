@@ -5,13 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Table(name = "contact", schema="salesforce")
 public class Contact {
 
     @Id
     @GeneratedValue
     private Long id;
+    @Column(name = "Name")
     private String name;
-    private int age;
+    
 
 
     public Long getId() {
@@ -30,16 +32,8 @@ public class Contact {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     @Override
     public String toString() {
-        return String.format("Person{id=%d, name='%s', age=%d}", id, name, age);
+        return String.format("Person{id=%d, name='%s'}", id, name);
     }
 }
