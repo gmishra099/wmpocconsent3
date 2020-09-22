@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wm.model.Consent;
 import com.wm.model.Contact;
+import com.wm.model.ContactPointEmail;
+import com.wm.model.ContactPointPhone;
 import com.wm.model.Individual;
 import com.wm.service.ConsentService;
+import com.wm.service.ContactPointEmailService;
+import com.wm.service.ContactPointPhoneService;
 import com.wm.service.ContactService;
 import com.wm.service.IndividualService;
 import com.wm.wrapper.WrapperConsent;
@@ -31,6 +35,10 @@ public class ContactController {
 	
 	@Autowired
 	ConsentService consentService;
+	@Autowired
+	ContactPointEmailService contactPointEmailService;
+	@Autowired
+	ContactPointPhoneService contactPointPhoneService;
 	
 		@RequestMapping(value = "/test", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 		public String home(Model model) {
@@ -107,7 +115,18 @@ public class ContactController {
 			List<WrapperConsent> wrapperConsentList = new ArrayList<WrapperConsent>();
 			for(Consent consent: consents) {
 				WrapperConsent wrapperConsentObj = new WrapperConsent();
-				wrapperConsentObj.setContactPoint(consent.getContactPointId());
+				String coontactPointId = consent.getContactPointId();
+				
+				
+				if(contactPointEmailService.findBysfid(coontactPointId) != null) {
+					ContactPointEmail conPoinEmailObj=contactPointEmailService.findBysfid(coontactPointId);
+					wrapperConsentObj.setContactPoint(conPoinEmailObj.getEmailAddress());
+				}
+				else {
+					ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBysfid(coontactPointId);
+					wrapperConsentObj.setContactPoint(conPoinPhoneObj.getTelephoneNumber());
+				}
+				
 				wrapperConsentObj.setConsentState(consent.getConsent__c());;
 				wrapperConsentObj.setConsentName(consent.getName());
 				wrapperConsentObj.setCommSubscriptionFormula(consent.getComm_sub__c());
