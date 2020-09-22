@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CommSubscriptionConsent", schema="salesforce")
+@Table(name = "commsubscriptionconsent", schema="salesforce")
 
 public class Consent {
     @Id
@@ -15,25 +15,26 @@ public class Consent {
     private Long id;
     
     @Column(name = "sfid")
-    private String conSFDC;
+    private String consentSFDC;
     
-    @Column(name = "ContactPointId")
-    private String contactPoint;
+  
+    @Column(name = "consentgiverid")
+    private String consentGiverId;
     
     @Column(name = "Consent__c")
-    private String consentState;
+    private String Consent__c;
     
     @Column(name = "Name")
-    private String consentName;
+    private String name;
     
-    @Column(name = "ConsentCapturedSource")
-    private String consentCapturedSource;
+    @Column(name = "contactpointid")
+    private String contactPointId;
     
-    @Column(name = "Comm_Sub__c")
-    private String commSubscription;
+    @Column(name = "Comm_sub__c")
+    private String comm_sub__c;
     
-    @Column(name = "ConsentGiverId")
-    private String consentGiverId;
+    @Column(name = "Commsubscriptionchanneltypeid")
+    private String commSubscriptionChannelTypeId;
 
 	public Long getId() {
 		return id;
@@ -43,52 +44,12 @@ public class Consent {
 		this.id = id;
 	}
 
-	public String getConSFDC() {
-		return conSFDC;
+	public String getConsentSFDC() {
+		return consentSFDC;
 	}
 
-	public void setConSFDC(String conSFDC) {
-		this.conSFDC = conSFDC;
-	}
-
-	public String getContactPoint() {
-		return contactPoint;
-	}
-
-	public void setContactPoint(String contactPoint) {
-		this.contactPoint = contactPoint;
-	}
-
-	public String getConsentState() {
-		return consentState;
-	}
-
-	public void setConsentState(String consentState) {
-		this.consentState = consentState;
-	}
-
-	public String getConsentName() {
-		return consentName;
-	}
-
-	public void setConsentName(String consentName) {
-		this.consentName = consentName;
-	}
-
-	public String getConsentCapturedSource() {
-		return consentCapturedSource;
-	}
-
-	public void setConsentCapturedSource(String consentCapturedSource) {
-		this.consentCapturedSource = consentCapturedSource;
-	}
-
-	public String getCommSubscription() {
-		return commSubscription;
-	}
-
-	public void setCommSubscription(String commSubscription) {
-		this.commSubscription = commSubscription;
+	public void setConsentSFDC(String consentSFDC) {
+		this.consentSFDC = consentSFDC;
 	}
 
 	public String getConsentGiverId() {
@@ -99,6 +60,44 @@ public class Consent {
 		this.consentGiverId = consentGiverId;
 	}
 
-    
+	public String getConsent__c() {
+		return Consent__c;
+	}
+
+	public void setConsent__c(String consent__c) {
+		Consent__c = consent__c;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getContactPointId() {
+		return contactPointId;
+	}
+
+	public void setContactPointId(String contactPointId) {
+		this.contactPointId = contactPointId;
+	}
+
+	public String getComm_sub__c() {
+		return comm_sub__c;
+	}
+
+	public void setComm_sub__c(String comm_sub__c) {
+		this.comm_sub__c = comm_sub__c;
+	}
+
+	public String getCommSubscriptionChannelTypeId() {
+		return commSubscriptionChannelTypeId;
+	}
+
+	public void setCommSubscriptionChannelTypeId(String commSubscriptionChannelTypeId) {
+		this.commSubscriptionChannelTypeId = commSubscriptionChannelTypeId;
+	}  
     
 }

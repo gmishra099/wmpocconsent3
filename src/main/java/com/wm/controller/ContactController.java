@@ -17,6 +17,7 @@ import com.wm.model.Individual;
 import com.wm.service.ConsentService;
 import com.wm.service.ContactService;
 import com.wm.service.IndividualService;
+import com.wm.wrapper.WrapperConsent;
 import com.wm.wrapper.WrapperIndividual;
 
 @RestController
@@ -101,13 +102,26 @@ public class ContactController {
 			obj.setHasoptedouttracking(ind.getHasoptedouttracking());
 			obj.setName(ind.getName());
 			obj.setShouldforget(ind.getShouldforget());
+			String indSfid = ind.getIndSFID();
+			List<Consent> consents=consentService.findByconsentGiverId(indSfid);
+			List<WrapperConsent> wrapperConsentList = new ArrayList<WrapperConsent>();
+			for(Consent consent: consents) {
+				WrapperConsent wrapperConsentObj = new WrapperConsent();
+				wrapperConsentObj.setContactPoint(consent.getContactPointId());
+				wrapperConsentObj.setConsentState(consent.getConsent__c());;
+				wrapperConsentObj.setConsentName(consent.getName());
+				wrapperConsentObj.setCommSubscriptionFormula(consent.getComm_sub__c());
+				wrapperConsentObj.setCommSubscriptionChannelType(consent.getCommSubscriptionChannelTypeId());
+				wrapperConsentList.add(wrapperConsentObj);
+			}
+			obj.setWrapperConsentList(wrapperConsentList);
 			return obj;
 		}
 
 		@RequestMapping(value = "/test6", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 		public List<Consent> home6() {
 			long Id = 21;
-			List<Consent> consentList=consentService.findByconsentGiverId("124");
+			List<Consent> consentList=consentService.findByconsentGiverId("0PK2w000000bmCTGAY");
 			return consentList;
 		}
 		
