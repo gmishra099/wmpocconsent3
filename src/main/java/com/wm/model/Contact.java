@@ -18,49 +18,63 @@ public class Contact {
     
     @Column(name = "sfid")
     private String conSFDC;
+
     
     @Column(name = "Customer_Id__c")
     private String cusId;
     
-    public String getCusId() {
-		return cusId;
+    @Column(name = "Individualid")
+    private String  Individualid;
+    
+
+	public String getIndividualid() {
+		return Individualid;
 	}
 
-	public void setCusId(String cusId) {
-		this.cusId = cusId;
+
+	public void setIndividualid(String individualid) {
+		Individualid = individualid;
 	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	public String getConSFDC() {
 		return conSFDC;
 	}
 
+
 	public void setConSFDC(String conSFDC) {
 		this.conSFDC = conSFDC;
 	}
 
-	
-    
+
+	public String getCusId() {
+		return cusId;
+	}
 
 
+	public void setCusId(String cusId) {
+		this.cusId = cusId;
+	}
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Person{id=%d, name='%s'}", id, name);
-    }
+   
 }

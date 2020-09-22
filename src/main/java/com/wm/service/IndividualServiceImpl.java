@@ -18,5 +18,10 @@ public class IndividualServiceImpl implements IndividualService  {
     public List<Individual> getAllIndividuals() {
         return individualRepository.findAll();
     }
+	
+	@Override
+    public Individual findByindSFID(String sfid) {
+        return individualRepository.findByindSFID(sfid);
+    }
 
 }
