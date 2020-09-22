@@ -14,9 +14,9 @@ public class ContactPointEmailImpl implements ContactPointEmailService{
     private ContactPointEmailRepository contactPointEmailRepository;
 	
 	@Override
-	public ContactPointEmail findBysfid(String contactPointId) {
+	public ContactPointEmail findBycontactPointEmailsfid(String contactPointId) {
 		// TODO Auto-generated method stub
-		return contactPointEmailRepository.findBysfid(contactPointId);
+		return contactPointEmailRepository.findBycontactPointEmailsfid(contactPointId);
 	}
 
 }
