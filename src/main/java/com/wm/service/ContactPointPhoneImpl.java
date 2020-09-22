@@ -13,9 +13,9 @@ public class ContactPointPhoneImpl implements ContactPointPhoneService {
     private ContactPointPhoneRepository contactPointPhoneRepository;
 
 	@Override
-	public ContactPointPhone findBysfid(String contactPointId) {
+	public ContactPointPhone findBycontactPointPhonesfid(String contactPointId) {
 		// TODO Auto-generated method stub
-		return contactPointPhoneRepository.findBysfid(contactPointId);
+		return contactPointPhoneRepository.findBycontactPointPhonesfid(contactPointId);
 	}
 
 }
