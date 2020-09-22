@@ -101,7 +101,7 @@ public class ContactController {
 			return conobj;
 		}
 		
-		@RequestMapping(value = "/test5{custId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+		@RequestMapping(value = "/test5/{custId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 		public WrapperIndividual home5(@PathVariable String custId) {
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
