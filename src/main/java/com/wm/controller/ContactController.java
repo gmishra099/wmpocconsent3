@@ -118,12 +118,12 @@ public class ContactController {
 				String coontactPointId = consent.getContactPointId();
 				
 				
-				if(contactPointEmailService.findBysfid(coontactPointId) != null) {
-					ContactPointEmail conPoinEmailObj=contactPointEmailService.findBysfid(coontactPointId);
+				if(contactPointEmailService.findBycontactPointEmailsfid(coontactPointId) != null) {
+					ContactPointEmail conPoinEmailObj=contactPointEmailService.findBycontactPointEmailsfid(coontactPointId);
 					wrapperConsentObj.setContactPoint(conPoinEmailObj.getEmailAddress());
 				}
 				else {
-					ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBysfid(coontactPointId);
+					ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBycontactPointPhonesfid(coontactPointId);
 					wrapperConsentObj.setContactPoint(conPoinPhoneObj.getTelephoneNumber());
 				}
 				
