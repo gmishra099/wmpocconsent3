@@ -10,5 +10,5 @@ import com.wm.model.ContactPointEmail;
 
 @Repository
 public interface ContactPointEmailRepository extends JpaRepository<ContactPointEmail, Long>{
-	ContactPointEmail findBysfid(String contactPointId);
+	ContactPointEmail findBycontactPointEmailsfid(String contactPointId);
 }
