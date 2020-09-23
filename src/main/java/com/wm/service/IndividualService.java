@@ -11,6 +11,7 @@ public interface IndividualService {
 
     public List<Individual> getAllIndividuals();
     public Individual findByindSFID(String sfid);
+    public Individual save(Individual ind);
 
   //  long countContacts();
 
