@@ -23,5 +23,10 @@ public class IndividualServiceImpl implements IndividualService  {
     public Individual findByindSFID(String sfid) {
         return individualRepository.findByindSFID(sfid);
     }
+     
+    @Override
+    public Individual save(Individual ind) {
+        return individualRepository.save(ind);
+    }
 
 }
