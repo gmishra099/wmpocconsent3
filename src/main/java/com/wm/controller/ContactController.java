@@ -138,11 +138,17 @@ public class ContactController {
 			return obj;
 		}
 
-		@RequestMapping(value = "/test6", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-		public List<Consent> home6() {
-			long Id = 21;
-			List<Consent> consentList=consentService.findByconsentGiverId("0PK2w000000bmCTGAY");
-			return consentList;
+		@RequestMapping(value = "/test6{custId}", method = RequestMethod.PUT, produces = { MediaType.APPLICATION_JSON_VALUE })
+		public Individual home6( @PathVariable String custId, @RequestBody Individual individualDetails) {
+			Contact con=contactService.findByCustId(custId);
+			String indSFID= con.getIndividualid();
+			Individual ind=individualService.findByindSFID(indSFID);
+			ind.setShouldforget("T");
+			ind.setName("Gaurav Mishra");
+			ind.setHasoptedouttracking("T");
+			individualService.save(ind);
+			
+			return ind;
 		}
 		
 	
