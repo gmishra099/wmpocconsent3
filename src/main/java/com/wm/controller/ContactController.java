@@ -139,7 +139,7 @@ public class ContactController {
 			return obj;
 		}
 
-		@RequestMapping(value = "/test6", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+		@RequestMapping(value = "/test6", method = RequestMethod.PUT)
 		public Individual home6( @RequestParam String custId, @RequestBody Individual individualDetails) {
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
@@ -148,7 +148,6 @@ public class ContactController {
 			ind.setName("Gaurav Mishra");
 			ind.setHasoptedouttracking("T");
 			individualService.save(ind);
-			
 			return ind;
 		}
 	
