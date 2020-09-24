@@ -139,8 +139,8 @@ public class ContactController {
 			return obj;
 		}
 
-		@RequestMapping(value = "/test6/{custId}", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE })
-		public Individual home6( @PathVariable String custId, @RequestBody Individual individualDetails) {
+		@RequestMapping(value = "/test6", method = RequestMethod.PUT, consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+		public Individual home6( @RequestParam String custId, @RequestBody Individual individualDetails) {
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
 			Individual ind=individualService.findByindSFID(indSFID);
@@ -151,6 +151,5 @@ public class ContactController {
 			
 			return ind;
 		}
-		
 	
 }
