@@ -54,53 +54,7 @@ public class ContactController {
 			contactService.getAllContacts();
 			return contactService.getAllContacts();
 		}
-		
-		@RequestMapping(value = "/test2", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-		public List<Individual> home2() {
-			 
-			//contactService.getAllContacts();
-			return individualService.getAllIndividuals();
-		}
-		
-		@RequestMapping(value = "/test3", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-		public List<WrapperIndividual> home3() {
-			List<WrapperIndividual> WrapperIndividual = new ArrayList<WrapperIndividual>();
-			
-			List<Individual> indiviList = individualService.getAllIndividuals();
-			List<Contact> conList = contactService.getAllContacts();
-			
-			for( Contact con:conList) {
-				for(Individual indivi:indiviList) {
-					if( con.getCusId() != null) {
-						
-						if(con.getCusId().equals("10001")) {
-							WrapperIndividual obj = new WrapperIndividual();
-							obj.setCusId("10001");;
-							obj.setHasoptedouttracking(indivi.getHasoptedouttracking());
-							obj.setName(indivi.getName());
-							obj.setShouldforget(indivi.getShouldforget());
-							WrapperIndividual.add(obj);
-						}
-							
-						
-					}
 
-
-				}
-				
-			}
-			
-			
-			return WrapperIndividual;
-		}
-		
-		@RequestMapping(value = "/test4", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
-		public Contact home4() {
-			long Id = 21;
-			Optional<Contact> con=contactService.getContactById(Id);
-			Contact conobj=con.get();
-			return conobj;
-		}
 		
 		@RequestMapping(value = "/test5/{custId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 		public WrapperIndividual home5(@PathVariable String custId) {
@@ -139,27 +93,18 @@ public class ContactController {
 			return obj;
 		}
 
-		@RequestMapping(value = "/test6", method = RequestMethod.PUT, produces = { MediaType.APPLICATION_JSON_VALUE }, consumes= { MediaType.APPLICATION_JSON_VALUE })
-		public Individual home6( @RequestParam String custId, @RequestBody Individual individualDetails ) {
-			Contact con=contactService.findByCustId(custId);
-			String indSFID= con.getIndividualid();
-			Individual ind=individualService.findByindSFID(indSFID);
-			Boolean T = true;
-			Boolean F = true;
-			ind.setShouldforget(T);
-			ind.setName("Gaurav Mishra");
-			ind.setHasoptedouttracking(T);
-			individualService.save(ind);
-			return ind;
-		}
+
 	
 			@PutMapping("/test/{id}")
 		public Individual updateEmployee(@PathVariable(value = "id") String custId,
 				@Validated @RequestBody Individual inddetails){
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
+			Boolean T = true;
 			Individual ind=individualService.findByindSFID(indSFID);
 			ind.setName("Gaurav Mishra");
+			ind.setHasoptedouttracking(T);
+			ind.setShouldforget(T);
 			individualService.save(ind);
 			return ind;
 		}
