@@ -106,7 +106,7 @@ public class ContactController {
 			ind.setShouldforget(indDetail.getShouldforget());
 			individualService.save(ind);
 			Consent con1 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
-	        con1.setConsent__c("Opt-Test");
+	        con1.setConsent__c("Opt-In");
 			System.out.println("consent test value"+con1.getConsent__c());
 			consentService.save(con1);
 			Consent con2 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
