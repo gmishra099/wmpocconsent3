@@ -26,4 +26,9 @@ public class ConsentServiceImpl implements  ConsentService {
 		return consentRepository.findByComm_sub__cAndcontactpointid(getComm_sub__c,getContactPointId);
 	}
 
+		@Override
+	public Consent save(Consent con) {
+		// TODO Auto-generated method stub
+		return consentRepository.save(con);
+	}
 }
