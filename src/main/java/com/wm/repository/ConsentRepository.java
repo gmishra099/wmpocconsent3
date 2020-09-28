@@ -9,6 +9,6 @@ import com.wm.model.Consent;
 @Repository
 public interface ConsentRepository extends JpaRepository<Consent, Long> {
 	List<Consent> findByconsentGiverId(String consentGiverId);
-	@Query( value = "SELECT * FROM commsubscriptionconsent u WHERE Comm_sub__c = ?1 AND contactpointid =?2",nativeQuery = true)
+	@Query( value = "SELECT * FROM salesforce.commsubscriptionconsent u WHERE Comm_sub__c = ?1 AND contactpointid =?2",nativeQuery = true)
 	Consent findByComm_sub__cAndcontactpointid(String getComm_sub__c, String getContactPointId);
 }
