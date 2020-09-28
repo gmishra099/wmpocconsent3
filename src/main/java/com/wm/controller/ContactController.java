@@ -152,16 +152,14 @@ public class ContactController {
 		}
 	
 			@PutMapping("/test/{id}")
-		public Individual updateEmployee(@PathVariable(value = "id") String custId,
+		public Contact updateEmployee(@PathVariable(value = "id") String custId,
 				@Validated @RequestBody Individual inddetails){
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
 			Individual ind=individualService.findByindSFID(indSFID);
-			//ind.setShouldforget("T");
 			ind.setName("Gaurav Mishra");
-			//ind.setHasoptedouttracking("T");
 			individualService.save(ind);
-			return ind;
+			return con;
 		}
 	
 	
