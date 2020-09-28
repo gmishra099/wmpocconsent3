@@ -151,12 +151,15 @@ public class ContactController {
 			return ind;
 		}
 	
-	@RequestMapping(value = "/test7/{custId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value = "/test7/{custId}", method = RequestMethod.PUT, produces = { MediaType.APPLICATION_JSON_VALUE })
 		public Individual home7(@PathVariable String custId) {
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
 			Individual ind=individualService.findByindSFID(indSFID);
-			System.out.println("test7");
+			ind.setShouldforget("T");
+			ind.setName("Gaurav Mishra");
+			ind.setHasoptedouttracking("T");
+			individualService.save(ind);
 			return ind;
 		}
 }
