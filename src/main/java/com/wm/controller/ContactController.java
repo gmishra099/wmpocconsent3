@@ -111,6 +111,8 @@ public class ContactController {
 			consentService.save(con1);
 			Consent con2 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
 			System.out.println("consent test value"+con2.getConsent__c());
+			System.out.println("consent test value"+con2.getConsentSFDC());
+			
 			//}
 			return con1;
 		}
