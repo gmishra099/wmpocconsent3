@@ -97,7 +97,7 @@ public class ContactController {
 	
 			@PutMapping("/test/{id}")
 		public Individual updateEmployee(@PathVariable(value = "id") String custId,
-				@Validated @RequestBody Individual inddetails){
+				@Validated @RequestBody Individual indDetails){
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
 			Individual ind=individualService.findByindSFID(indSFID);
