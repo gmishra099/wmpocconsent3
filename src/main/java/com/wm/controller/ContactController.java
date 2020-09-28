@@ -111,7 +111,7 @@ public class ContactController {
 	
 				con1 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
 				//con1=consentService.findByComm_sub__cAndcontactpointid(consent.getComm_sub__c(), consent.getContactPointId());
-				con1.setConsent__c("Opt-Out");
+				con1.setConsent__c("Opt-In");
 				System.out.println("consent test value"+con1.getConsent__c());
 				consentService.save(con1);
 				
