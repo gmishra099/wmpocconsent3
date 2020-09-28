@@ -109,9 +109,9 @@ public class ContactController {
 			Consent con1 = null;
 			for(Consent consent: consents) {
 	
-				con1 =consentService.findByComm_sub__cAndcontactpointid("Opt-Out", "0Ow2w000000XZAMCA4");
+				con1 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
 				//con1=consentService.findByComm_sub__cAndcontactpointid(consent.getComm_sub__c(), consent.getContactPointId());
-				con1.setConsent__c("Opt-In");
+				con1.setConsent__c("Opt-Out");
 				System.out.println("consent test value"+con1.getConsent__c());
 				
 			}
