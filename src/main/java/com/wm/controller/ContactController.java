@@ -106,9 +106,10 @@ public class ContactController {
 			ind.setShouldforget(indDetail.getShouldforget());
 			individualService.save(ind);
 			List<Consent> consents=consentService.findByconsentGiverId(indSFID);
+			Consent con1 = null;
 			for(Consent consent: consents) {
 	
-				Consent con1=consentService.findByComm_sub__cAndcontactpointid(consent.getComm_sub__c(), consent.getContactPointId());
+				 con1=consentService.findByComm_sub__cAndcontactpointid(consent.getComm_sub__c(), consent.getContactPointId());
 				System.out.println(con1);
 				
 			}
