@@ -151,15 +151,6 @@ public class ContactController {
 			return ind;
 		}
 	
-	@RequestMapping(value = "/test7/{custId}", method = RequestMethod.PUT, produces = { MediaType.APPLICATION_JSON_VALUE })
-		public Individual home7(@PathVariable String custId) {
-			Contact con=contactService.findByCustId(custId);
-			String indSFID= con.getIndividualid();
-			Individual ind=individualService.findByindSFID(indSFID);
-			ind.setShouldforget("T");
-			ind.setName("Gaurav Mishra");
-			ind.setHasoptedouttracking("T");
-			individualService.save(ind);
-			return ind;
-		}
+	
+	
 }
