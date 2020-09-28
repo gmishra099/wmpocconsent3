@@ -105,6 +105,13 @@ public class ContactController {
 			ind.setHasoptedouttracking(indDetail.getHasoptedouttracking());
 			ind.setShouldforget(indDetail.getShouldforget());
 			individualService.save(ind);
+			List<Consent> consents=consentService.findByconsentGiverId(indSFID);
+			for(Consent consent: consents) {
+	
+				Consent con1=consentService.findByComm_sub__cAndcontactpointid(consent.getComm_sub__c(), consent.getContactPointId());
+				System.out.println(con1);
+				
+			}
 			return ind;
 		}
 	
