@@ -156,6 +156,7 @@ public class ContactController {
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
 			Individual ind=individualService.findByindSFID(indSFID);
+			System.out.println("test7");
 			return ind;
 		}
 }
