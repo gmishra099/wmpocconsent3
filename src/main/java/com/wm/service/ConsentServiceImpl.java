@@ -19,5 +19,11 @@ public class ConsentServiceImpl implements  ConsentService {
 		// TODO Auto-generated method stub
 		return consentRepository.findByconsentGiverId(consentGiverId);
 	}
+	
+		@Override
+	public Consent findByComm_sub__cAndcontactpointid(String getComm_sub__c, String getContactPointId) {
+		// TODO Auto-generated method stub
+		return consentRepository.findByComm_sub__cAndcontactpointid(getComm_sub__c,getContactPointId);
+	}
 
 }
