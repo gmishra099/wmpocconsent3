@@ -96,7 +96,7 @@ public class ContactController {
 
 	
 			@PutMapping("/test/{id}")
-		public Individual updateEmployee(@PathVariable(value = "id") String custId,
+		public Consent updateEmployee(@PathVariable(value = "id") String custId,
 				@Validated @RequestBody Individual indDetail){
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
@@ -112,7 +112,7 @@ public class ContactController {
 				System.out.println(con1);
 				
 			}
-			return ind;
+			return con1;
 		}
 	
 	
