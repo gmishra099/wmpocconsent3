@@ -157,9 +157,9 @@ public class ContactController {
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
 			Individual ind=individualService.findByindSFID(indSFID);
-			ind.setShouldforget("T");
+			//ind.setShouldforget("T");
 			ind.setName("Gaurav Mishra");
-			ind.setHasoptedouttracking("T");
+			//ind.setHasoptedouttracking("T");
 			individualService.save(ind);
 			return ind;
 		}
