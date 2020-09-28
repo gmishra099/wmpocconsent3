@@ -20,12 +20,9 @@ public class Individual {
     private String indSFID;
     
     @Column(name = "Hasoptedouttracking")
-    private String Hasoptedouttracking;
+    private Boolean Hasoptedouttracking;
     
-    @Column(name = "Shouldforget")
-    private String Shouldforget;
-
-	public Long getId() {
+    public Long getId() {
 		return id;
 	}
 
@@ -49,22 +46,26 @@ public class Individual {
 		this.indSFID = indSFID;
 	}
 
-	public String getHasoptedouttracking() {
+	public Boolean getHasoptedouttracking() {
 		return Hasoptedouttracking;
 	}
 
-	public void setHasoptedouttracking(String hasoptedouttracking) {
+	public void setHasoptedouttracking(Boolean hasoptedouttracking) {
 		Hasoptedouttracking = hasoptedouttracking;
 	}
 
-	public String getShouldforget() {
+	public Boolean getShouldforget() {
 		return Shouldforget;
 	}
 
-	public void setShouldforget(String shouldforget) {
+	public void setShouldforget(Boolean shouldforget) {
 		Shouldforget = shouldforget;
 	}
-    
+
+	@Column(name = "Shouldforget")
+    private Boolean Shouldforget;
+
+	
     
 
 }
