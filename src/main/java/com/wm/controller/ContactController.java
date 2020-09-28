@@ -100,11 +100,10 @@ public class ContactController {
 				@Validated @RequestBody Individual inddetails){
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
-			Boolean T = true;
 			Individual ind=individualService.findByindSFID(indSFID);
-			ind.setName("Gaurav Mishra");
-			ind.setHasoptedouttracking(T);
-			ind.setShouldforget(T);
+			ind.setName(indDetail.getName());
+			ind.setHasoptedouttracking(indDetail.getHasoptedouttracking());
+			ind.setShouldforget(indDetail.getShouldforget());
 			individualService.save(ind);
 			return ind;
 		}
