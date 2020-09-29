@@ -24,5 +24,11 @@ public class ContactPointEmailImpl implements ContactPointEmailService{
 		// TODO Auto-generated method stub
 		return contactPointEmailRepository.findByemailAddress(emailAddress);
 	}
+	
+	@Override
+	public ContactPointEmail save(ContactPointEmail obj) {
+		// TODO Auto-generated method stub
+		return contactPointEmailRepository.save(obj);
+	}
 
 }
