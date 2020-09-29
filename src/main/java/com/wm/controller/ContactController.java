@@ -95,9 +95,9 @@ public class ContactController {
 
 
 	
-	@PutMapping("/test/{id}")
+		@PutMapping("/test/{id}")
 		public Consent updateEmployee(@PathVariable(value = "id") String custId,
-				@Validated @RequestBody Individual indDetail){
+				@Validated @RequestBody WrapperIndividual indDetail){
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
 			Individual ind=individualService.findByindSFID(indSFID);
@@ -105,14 +105,19 @@ public class ContactController {
 			ind.setHasoptedouttracking(indDetail.getHasoptedouttracking());
 			ind.setShouldforget(indDetail.getShouldforget());
 			individualService.save(ind);
+			
+			List<WrapperConsent> WrapperConsentList=indDetail.getWrapperConsentList();
+			for(WrapperConsent WrapperConsent:WrapperConsentList) {
+				System.out.println(WrapperConsent.getCommSubscriptionFormula()+"  "+WrapperConsent.getContactPoint()+"  "+WrapperConsent.getConsentState());
+				
+			}
+			
 			Consent con1 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
-	        con1.setConsent__c("Opt-In");
+	        con1.setConsent__c("Opt-Out");
 			System.out.println("consent test value"+con1.getConsent__c());
 			consentService.save(con1);
 			Consent con2 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
-			System.out.println("consent test value"+con2.getConsent__c());
 			System.out.println("consent test value"+con2.getConsentSFDC());
-			
 			//}
 			return con1;
 		}
