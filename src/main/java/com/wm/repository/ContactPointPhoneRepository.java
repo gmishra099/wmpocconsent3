@@ -9,4 +9,5 @@ import com.wm.model.ContactPointPhone;
 @Repository
 public interface ContactPointPhoneRepository extends JpaRepository<ContactPointPhone, Long> {
 	ContactPointPhone findBycontactPointPhonesfid(String contactPointId);
+	ContactPointPhone findBytelephoneNumber(String telephoneNumber );
 }
