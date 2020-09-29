@@ -130,5 +130,16 @@ public class ContactController {
 			return ind;
 		}
 	
+			@PostMapping("/test8/{id}")
+	                public Individual createEmployee(@PathVariable(value = "id") String custId,
+				@Validated @RequestBody WrapperIndividual indDetail) {
+			Contact con=contactService.findByCustId(custId);
+			Individual indObj = new Individual();
+			indObj.setLastName(indDetail.getLastName());
+			indObj.setHasoptedouttracking(indDetail.getHasoptedouttracking());
+			individualService.save(indObj);
+	              return indObj;
+	    }
+	
 	
 }
