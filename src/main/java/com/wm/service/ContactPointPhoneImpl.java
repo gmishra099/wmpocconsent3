@@ -23,5 +23,11 @@ public class ContactPointPhoneImpl implements ContactPointPhoneService {
 		// TODO Auto-generated method stub
 		return contactPointPhoneRepository.findBytelephoneNumber(telephoneNumber);
 	}
+	
+		@Override
+	public ContactPointPhone save(ContactPointPhone obj) {
+		// TODO Auto-generated method stub
+		return contactPointPhoneRepository.save(obj);
+	
 
 }
