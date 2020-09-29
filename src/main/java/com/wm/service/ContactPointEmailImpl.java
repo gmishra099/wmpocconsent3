@@ -18,5 +18,11 @@ public class ContactPointEmailImpl implements ContactPointEmailService{
 		// TODO Auto-generated method stub
 		return contactPointEmailRepository.findBycontactPointEmailsfid(contactPointId);
 	}
+	
+	@Override
+	public ContactPointEmail findByemailAddress(String emailAddress) {
+		// TODO Auto-generated method stub
+		return contactPointEmailRepository.findByemailAddress(emailAddress);
+	}
 
 }
