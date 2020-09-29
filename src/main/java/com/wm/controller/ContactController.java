@@ -145,7 +145,7 @@ public class ContactController {
 				System.out.println(WrapperConsent.getCommSubscriptionFormula()+"  "+WrapperConsent.getContactPoint()+"  "+WrapperConsent.getConsentState());
 				if(WrapperConsent.getContactPoint().contains("@")) {
 					ContactPointEmail conPoinEmailObj=contactPointEmailService.findByemailAddress(WrapperConsent.getContactPoint());
-					if(conPoinEmailObj.equals(null)) {
+					if(conPoinEmailObj == null) {
 						ContactPointEmail conPoinEmailObjInsert = new ContactPointEmail();
 						conPoinEmailObjInsert.setEmailAddress(WrapperConsent.getContactPoint());
 						contactPointEmailService.save(conPoinEmailObjInsert);
@@ -154,7 +154,7 @@ public class ContactController {
 					}
 				else {
 					ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBytelephoneNumber(WrapperConsent.getContactPoint());
-					if(conPoinPhoneObj.equals(null)) {
+					if(conPoinPhoneObj == null) {
 						ContactPointPhone conPoinPhoneObjInsert =new ContactPointPhone ();
 						conPoinPhoneObjInsert.setTelephoneNumber(WrapperConsent.getContactPoint());
 						contactPointPhoneService.save(conPoinPhoneObjInsert);
