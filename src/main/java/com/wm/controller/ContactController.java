@@ -94,7 +94,7 @@ public class ContactController {
 		}
 
 
-			@PutMapping("/test/{id}")
+		@PutMapping("/test/{id}")
 		public Individual updateEmployee(@PathVariable(value = "id") String custId,
 				@Validated @RequestBody WrapperIndividual indDetail){
 			Contact con=contactService.findByCustId(custId);
@@ -108,19 +108,21 @@ public class ContactController {
 			List<WrapperConsent> WrapperConsentList=indDetail.getWrapperConsentList();
 			for(WrapperConsent WrapperConsent:WrapperConsentList) {
 				System.out.println(WrapperConsent.getCommSubscriptionFormula()+"  "+WrapperConsent.getContactPoint()+"  "+WrapperConsent.getConsentState());
-				ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBytelephoneNumber(WrapperConsent.getContactPoint());
-				Consent con1 =consentService.findByComm_sub__cAndcontactpointid(WrapperConsent.getCommSubscriptionFormula(), conPoinPhoneObj.getContactPointPhonesfid());
-				con1.setConsent__c(WrapperConsent.getConsentState());
-				consentService.save(con1);
+				if(WrapperConsent.getContactPoint().contains("@")) {
+					ContactPointEmail conPoinEmailObj=contactPointEmailService.findByemailAddress(WrapperConsent.getContactPoint());
+					Consent con1 =consentService.findByComm_sub__cAndcontactpointid(WrapperConsent.getCommSubscriptionFormula(), conPoinEmailObj.getContactPointEmailsfid());
+					con1.setConsent__c(WrapperConsent.getConsentState());
+					consentService.save(con1);
+				}
+				else {
+					ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBytelephoneNumber(WrapperConsent.getContactPoint());
+					Consent con1 =consentService.findByComm_sub__cAndcontactpointid(WrapperConsent.getCommSubscriptionFormula(), conPoinPhoneObj.getContactPointPhonesfid());
+					con1.setConsent__c(WrapperConsent.getConsentState());
+					consentService.save(con1);
+				}
+				
 			}
 			
-			/*Consent con1 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
-	                con1.setConsent__c("Opt-Out");
-			System.out.println("consent test value"+con1.getConsent__c());
-			consentService.save(con1);
-			Consent con2 =consentService.findByComm_sub__cAndcontactpointid("News Updates", "0Ow2w000000XZAMCA4");
-			System.out.println("consent test value"+con2.getConsentSFDC());
-			*/
 			return ind;
 		}
 	
