@@ -8,4 +8,5 @@ import com.wm.model.ContactPointEmail;
 public interface ContactPointEmailService {
 	public ContactPointEmail findBycontactPointEmailsfid(String contactPointId);
 	public ContactPointEmail findByemailAddress(String emailAddress);
+	public ContactPointEmail save(ContactPointEmail obj);
 }
