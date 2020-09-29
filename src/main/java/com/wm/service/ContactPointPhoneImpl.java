@@ -28,6 +28,8 @@ public class ContactPointPhoneImpl implements ContactPointPhoneService {
 	public ContactPointPhone save(ContactPointPhone obj) {
 		// TODO Auto-generated method stub
 		return contactPointPhoneRepository.save(obj);
+		
+	}
 	
 
 }
