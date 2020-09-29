@@ -108,11 +108,11 @@ public class ContactController {
 			List<WrapperConsent> WrapperConsentList=indDetail.getWrapperConsentList();
 			for(WrapperConsent WrapperConsent:WrapperConsentList) {
 				System.out.println(WrapperConsent.getCommSubscriptionFormula()+"  "+WrapperConsent.getContactPoint()+"  "+WrapperConsent.getConsentState());
-				if(WrapperConsent.getContactPoint().contains("@")) {
-					ContactPointEmail conPoinEmailObj=contactPointEmailService.findByemailAddress(WrapperConsent.getContactPoint());
-					Consent con1 =consentService.findByComm_sub__cAndcontactpointid(WrapperConsent.getCommSubscriptionFormula(), conPoinEmailObj.getContactPointEmailsfid());
-					con1.setConsent__c(WrapperConsent.getConsentState());
-					consentService.save(con1);
+				if(WrapperConsent.getContactPoint().contains("kkkkkkkkkkk")) {
+					//ContactPointEmail conPoinEmailObj=contactPointEmailService.findByemailAddress(WrapperConsent.getContactPoint());
+					//Consent con1 =consentService.findByComm_sub__cAndcontactpointid(WrapperConsent.getCommSubscriptionFormula(), conPoinEmailObj.getContactPointEmailsfid());
+					//con1.setConsent__c(WrapperConsent.getConsentState());
+					//consentService.save(con1);
 				}
 				else {
 					ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBytelephoneNumber(WrapperConsent.getContactPoint());
