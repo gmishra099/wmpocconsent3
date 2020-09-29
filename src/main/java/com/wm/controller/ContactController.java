@@ -131,15 +131,39 @@ public class ContactController {
 			return ind;
 		}
 	
-			@PostMapping("/test8/{id}")
-	                public Individual createEmployee(@PathVariable(value = "id") String custId,
+					@PostMapping("/test8/{id}")
+	    public Individual createEmployee(@PathVariable(value = "id") String custId,
 				@Validated @RequestBody WrapperIndividual indDetail) {
 			Contact con=contactService.findByCustId(custId);
 			Individual indObj = new Individual();
 			indObj.setLastName(indDetail.getLastName());
 			indObj.setHasoptedouttracking(indDetail.getHasoptedouttracking());
 			individualService.save(indObj);
-	              return indObj;
+			//con.setIndividualid(indObj.getIndSFID());
+			List<WrapperConsent> WrapperConsentList=indDetail.getWrapperConsentList();
+			for(WrapperConsent WrapperConsent:WrapperConsentList) {
+				System.out.println(WrapperConsent.getCommSubscriptionFormula()+"  "+WrapperConsent.getContactPoint()+"  "+WrapperConsent.getConsentState());
+				if(WrapperConsent.getContactPoint().contains("@")) {
+					ContactPointEmail conPoinEmailObj=contactPointEmailService.findByemailAddress(WrapperConsent.getContactPoint());
+					if(conPoinEmailObj.equals(null)) {
+						ContactPointEmail conPoinEmailObjInsert = new ContactPointEmail();
+						conPoinEmailObjInsert.setEmailAddress(WrapperConsent.getContactPoint());
+						contactPointEmailService.save(conPoinEmailObjInsert);
+						System.out.println("conPoinEmailObjInsert successfully");
+						}
+					}
+				else {
+					ContactPointPhone conPoinPhoneObj=contactPointPhoneService.findBytelephoneNumber(WrapperConsent.getContactPoint());
+					if(conPoinPhoneObj.equals(null)) {
+						ContactPointPhone conPoinPhoneObjInsert =new ContactPointPhone ();
+						conPoinPhoneObjInsert.setTelephoneNumber(WrapperConsent.getContactPoint());
+						contactPointPhoneService.save(conPoinPhoneObjInsert);
+						System.out.println("conPoinPhoneObjInsert successfully");
+					}
+					
+				}
+			}
+	        return indObj;
 	    }
 	
 	
