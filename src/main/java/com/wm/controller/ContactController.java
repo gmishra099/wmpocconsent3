@@ -57,7 +57,7 @@ public class ContactController {
 		}
 
 		
-		@RequestMapping(value = "/test5/{custId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
+		@RequestMapping(value = "/fetch/{custId}", method = RequestMethod.GET, produces = { MediaType.APPLICATION_JSON_VALUE })
 		public WrapperIndividual home5(@PathVariable String custId) {
 			Contact con=contactService.findByCustId(custId);
 			String indSFID= con.getIndividualid();
@@ -95,7 +95,7 @@ public class ContactController {
 		}
 
 
-		@PutMapping("/test/{id}")
+		@PutMapping("/update/{id}")
 		public Individual updateEmployee(@PathVariable(value = "id") String custId,
 				@Validated @RequestBody WrapperIndividual indDetail){
 			Contact con=contactService.findByCustId(custId);
